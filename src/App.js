@@ -1,8 +1,10 @@
 import './App.css';
 import UserInput from './UserInput';
+import Bookmark from './Bookmark';
 
 // Bootstrap imports
 import Card from 'react-bootstrap/Card';
+import Stack from 'react-bootstrap/Stack';
 
 function App() {
   return (
@@ -12,6 +14,12 @@ function App() {
           <UserInput />
         </Card>
       </header>
+      <main className="App-main">
+        <h3>Your saved bookmarks</h3>
+        <Stack gap={3} >
+          <Bookmark />
+        </Stack>
+      </main>
     </div>
   );
 }
