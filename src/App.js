@@ -1,22 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import UserInput from './UserInput';
+
+// Bootstrap imports
+import Card from 'react-bootstrap/Card';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Card className="p-4 w-75 bg-light">
+          <UserInput />
+        </Card>
       </header>
     </div>
   );
