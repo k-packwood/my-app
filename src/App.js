@@ -30,18 +30,23 @@ class App extends Component {
     ]
   }
 
+  addBookmark = (name, url) => {
+    const newBookmarks = [{name, url}, ...this.state.bookmarks];
+    this.setState({ bookmarks: newBookmarks })
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <Card className="p-4 w-75 bg-light">
-            <UserInput />
+            <UserInput addBookmark={this.addBookmark} />
           </Card>
         </header>
         <main className="App-main pb-5">
           <h3>Your saved bookmarks</h3>
           <Stack gap={3} >
-            <Row>
+            <Row className="m-3">
               <BookmarkList bookmarks={this.state.bookmarks} />
             </Row> 
           </Stack>
