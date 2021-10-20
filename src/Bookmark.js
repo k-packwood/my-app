@@ -5,6 +5,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 const Bookmark = (props) => {
+    const deleteByIndex = () => props.removeBookmark(props.index);
+
     return (
         <div className="col-12 col-md-6">
             <Card className="m-2">
@@ -12,7 +14,11 @@ const Bookmark = (props) => {
                     <h5>{props.name}</h5></Card.Header>
                 <Card.Body>
                     <p>{props.url}</p>
-                    <Button type="button" variant="danger">Delete</Button>
+                    <Button 
+                        type="button" 
+                        variant="danger"
+                        onClick={deleteByIndex}
+                    >Delete</Button>
                 </Card.Body>
             </Card>
         </div>

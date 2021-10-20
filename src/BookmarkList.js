@@ -7,11 +7,12 @@ const BookmarkList = (props) => {
     // item in props.bookmarks
     return (
         <>
-          {props.bookmarks.map(({ name, url }) => (
+          {props.bookmarks.map(({ name, url }, index) => (
             <Bookmark 
                 name={name}
                 url={url}
-                key={name}
+                index={index}
+                removeBookmark={props.removeBookmark}
             />
           ))}
         </>

@@ -32,7 +32,14 @@ class App extends Component {
 
   addBookmark = (name, url) => {
     const newBookmarks = [{name, url}, ...this.state.bookmarks];
-    this.setState({ bookmarks: newBookmarks })
+    this.setState({ bookmarks: newBookmarks });
+  }
+
+  removeBookmark = (clickedIndex) => {
+    // Filters all bookmark elements that don't match selected index
+    const filterCallback = (_, index) => index !== clickedIndex;
+    const newBookmarks = this.state.bookmarks.filter(filterCallback);
+    this.setState({ bookmarks: newBookmarks });
   }
 
   render() {
@@ -47,7 +54,7 @@ class App extends Component {
           <h3>Your saved bookmarks</h3>
           <Stack gap={3} >
             <Row className="m-3">
-              <BookmarkList bookmarks={this.state.bookmarks} />
+              <BookmarkList bookmarks={this.state.bookmarks} removeBookmark={this.removeBookmark} />
             </Row> 
           </Stack>
         </main>
