@@ -9,9 +9,9 @@ const Bookmark = (props) => {
         <div className="col-12 col-md-6">
             <Card className="m-2">
                 <Card.Header>
-                    <h5>Hello</h5></Card.Header>
+                    <h5>{props.name}</h5></Card.Header>
                 <Card.Body>
-                    <p>This is the URL</p>
+                    <p>{props.url}</p>
                     <Button type="button" variant="danger">Delete</Button>
                 </Card.Body>
             </Card>
