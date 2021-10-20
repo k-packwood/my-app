@@ -10,29 +10,23 @@ import Row from 'react-bootstrap/Row';
 
 class App extends Component {
   state = {
-    bookmarks: [
-      { 
-        name: "Google", 
-        url: "https://www.google.com/",
-      }, 
-      { 
-        name: "Facebook", 
-        url: "https://en-gb.facebook.com/", 
-      }, 
-      { 
-        name: "LinkedIn", 
-        url: "https://www.linkedin.com/", 
-      },
-      { 
-        name: "GitHub", 
-        url: "https://github.com/", 
-      }
-    ]
+    bookmarks: []
+  }
+
+  componentDidMount() {
+        // Gets local storage
+        const storage = localStorage.getItem("bookmarks");
+
+        if (storage !== null)
+          this.setState({ bookmarks: JSON.parse(storage) });
   }
 
   addBookmark = (name, url) => {
     const newBookmarks = [{name, url}, ...this.state.bookmarks];
     this.setState({ bookmarks: newBookmarks });
+
+    // sets local storage
+    localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
   }
 
   removeBookmark = (clickedIndex) => {
@@ -40,6 +34,9 @@ class App extends Component {
     const filterCallback = (_, index) => index !== clickedIndex;
     const newBookmarks = this.state.bookmarks.filter(filterCallback);
     this.setState({ bookmarks: newBookmarks });
+
+    // sets local storage
+    localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
   }
 
   render() {
@@ -51,7 +48,7 @@ class App extends Component {
           </Card>
         </header>
         <main className="App-main pb-5">
-          <h3>Your saved bookmarks</h3>
+          <h3>Saved bookmarks</h3>
           <Stack gap={3} >
             <Row className="m-3">
               <BookmarkList bookmarks={this.state.bookmarks} removeBookmark={this.removeBookmark} />
